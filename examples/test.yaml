@@ -1,0 +1,65 @@
+# devices:
+# - input_fn: '/dev/input/by-id/usb-SONiX_USB_DEVICE-event-kbd'
+#   output_name: remap-kbd
+#   remappings:
+#     KEY_CAPSLOCK:
+#     - KEY_LEFTCTRL
+#     KEY_LEFTALT:
+#     - KEY_LEFTMETA
+#     KEY_LEFTMETA:
+#     - KEY_LEFTALT
+#     KEY_RIGHTMETA:
+#     - KEY_RIGHTALT
+
+# - input_fn: '/dev/input/by-id/usb-SONiX_USB_DEVICE-event-if01'
+#   output_name: remap-kbd
+#   remappings:
+#     KEY_VOLUMEUP:
+#     - code: KEY_UP
+#       value: [1,0]
+#       repeat: true
+#       count: 5
+#       rate: 0.01
+#     KEY_VOLUMEDOWN:
+#     - code: KEY_DOWN
+#       value: [1,0]
+#       repeat: true
+#       count: 5
+#       rate: 0.01
+
+devices:
+- input_name: 'MX520'
+  output_name: remap-kbd
+  remappings:
+    KEY_CAPSLOCK:
+    - KEY_LEFTCTRL
+    KEY_LEFTALT:
+    - KEY_LEFTMETA
+    KEY_LEFTMETA:
+    - KEY_LEFTALT
+    KEY_RIGHTMETA:
+    - KEY_RIGHTALT
+    KEY_BRIGHTNESSDOWN:
+    - KEY_F1
+    KEY_BRIGHTNESSUP:
+    - KEY_F2
+    KEY_SCALE:
+    - KEY_F3
+    KEY_DASHBOARD:
+    - KEY_F4
+    KEY_KBDILLUMDOWN:
+    - KEY_F5
+    KEY_KBDILLUMUP:
+    - KEY_F6
+    KEY_PREVIOUSSONG:
+    - KEY_F7
+    KEY_PLAYPAUSE:
+    - KEY_F8
+    KEY_NEXTSONG:
+    - KEY_F9
+    KEY_MUTE:
+    - KEY_F10
+    KEY_VOLUMEDOWN:
+    - KEY_F11
+    KEY_VOLUMEUP:
+    - KEY_F12

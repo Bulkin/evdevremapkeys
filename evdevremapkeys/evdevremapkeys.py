@@ -254,7 +254,7 @@ def register_device(device):
 
     output = UInput(caps, name=device['output_name'])
 
-    asyncio.ensure_future(handle_events(input, output, remappings))
+    return asyncio.ensure_future(handle_events(input, output, remappings))
 
 
 @asyncio.coroutine
@@ -268,14 +268,25 @@ def shutdown(loop):
 
 def run_loop(args):
     config = load_config(args.config_file)
+    futures = []
     for device in config['devices']:
-        register_device(device)
+        futures.append(register_device(device))
 
     loop = asyncio.get_event_loop()
     loop.add_signal_handler(signal.SIGTERM,
                             functools.partial(asyncio.ensure_future,
                                               shutdown(loop)))
 
+    def callback(fut):
+        try:
+            res = fut.result()
+        except Exception as e:
+            print(e)
+            loop.stop()
+
+
+    for f in futures:
+        f.add_done_callback(callback)
     try:
         loop.run_forever()
     except KeyboardInterrupt:
